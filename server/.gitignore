@@ -1,0 +1,19 @@
+# Environment variables (contains secrets - never commit)
+.env
+
+server/.gitignore
+client/.gitignore
+# Dependencies (regenerated via npm install)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
