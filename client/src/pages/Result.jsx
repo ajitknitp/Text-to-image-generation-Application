@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../assets/assets";
 import { useState } from "react";
+import { AppContext } from "../context/AppContext";
 
 const Result = () => {
   const [image, setImage] = useState(assets.sample_img_1);
   const [isImageLoaded, setImageLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
-  const onSubmitHandler = async (e) => {};
+  const { generateImage } = useContext(AppContext);
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (input) {
+      const image = await generateImage(input);
+      if (image) {
+        setImageLoaded(true);
+        setImage(image);
+      }
+    }
+    setLoading(false);
+  };
   return (
     <form
       onSubmit={onSubmitHandler}
